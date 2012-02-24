@@ -1,0 +1,26 @@
+<h1>Listing product_sizes</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Size</th>
+  </tr>
+
+<% @product_sizes.each do |product_size| %>
+  
+	
+
+    <tr>
+    <td><%=h Product.find_by_id(product_size.product_id).pname %></td>
+<td><%=h Size.find_by_id(product_size.size_id).sizename %></td>
+    <td><%= link_to 'Show', product_size %></td>
+   
+    <td><%= link_to 'Destroy', product_size, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New product size', new_product_size_path %>
+<%= link_to 'Go to product List', products_path %>

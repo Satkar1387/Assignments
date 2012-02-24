@@ -1,0 +1,18 @@
+<p>
+  <b>Id:</b>
+  <%=h @category.id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @category.catname %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

@@ -1,0 +1,25 @@
+<h1>New Product</h1>
+
+<% form_for(@product) do |f| %>
+  <%= f.error_messages %>
+   <p>
+    <%= f.label :Product %><br />
+    <%= f.text_field :pname %>
+  </p>
+
+   <p>
+    <%= f.label :Category %><br />
+    <%= f.collection_select :category_id, Category.all, :id, :catname %>
+  </p>
+ 
+<p>
+    <%= f.label :Size %><br />
+   <%= select_tag("product[size_ids][]", options_for_select(Size.all.collect { |size| [size.sizename, size.id] }, @product.sizes.collect { |size| size.id}), {:multiple=>true, :size=>6})%>
+</p>
+  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>

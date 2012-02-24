@@ -1,0 +1,26 @@
+<h1>Listing Products</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Product name</th>
+    <th>Product Sizes</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%=h Category.find_by_id(product.category_id).catname %></td>
+    <td><%=h product.pname %></td>
+    <td><%=h product.sizes.collect(&:sizename).join(",")%></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New product', new_product_path %>
+<!--<%= link_to 'Assign size to products', new_product_size_path %>-->
+<%= link_to 'Go to Categories', categories_path %>
